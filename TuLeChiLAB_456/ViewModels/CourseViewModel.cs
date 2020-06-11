@@ -11,9 +11,9 @@ namespace TuLeChiLAB_456.ViewModels
 	{
         [Required]
         public string Place { get; set; }
-        [Required]
+        [Required][FutureDate]
         public string Date { get; set; }
-        [Required]
+        [Required][ValidTime]
         public string Time { get; set; }
         [Required]
         public byte Category { get; set; }
