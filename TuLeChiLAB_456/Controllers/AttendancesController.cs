@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TuLeChiLAB_456.DTOs;
 using TuLeChiLAB_456.Models;
 
 namespace TuLeChiLAB_456.Controllers
@@ -18,14 +19,14 @@ namespace TuLeChiLAB_456.Controllers
             _dbContext = new ApplicationDbContext();
         }
         [HttpPost]
-        public IHttpActionResult Attend([FromBody] int courseId)
+        public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
             var userId = User.Identity.GetUserId();
-            if (_dbContext.Attendances.Any(a => a.AttendeeID == userId && a.CourseId == courseId))
+            if (_dbContext.Attendances.Any(a => a.AttendeeID == userId && a.CourseId == attendanceDto.CourseId))
                 return BadRequest("The Attendance already exists!");
             var attendance = new Attendance
             {
-                CourseId = courseId,
+                CourseId = attendanceDto.CourseId,
                 AttendeeID = userId
             };
             _dbContext.Attendances.Add(attendance);

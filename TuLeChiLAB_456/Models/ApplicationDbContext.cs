@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using TuLeChiLAB_456.Models;
+using TuLeChiLAB_456.ViewModels;
+
 
 namespace TuLeChiLAB_456.Models
 {
